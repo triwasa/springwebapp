@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Strona główna</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="static/main.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body style="
+    background-image: url('https://images.pexels.com/photos/1319854/pexels-photo-1319854.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+    height: 100vh;
+
+">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+
+        <!-- BRAND -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" th:href="@{'/'}">Biblioteka</a>
+        </div>
+
+        <!-- COLLAPSIBLE NAVBAR -->
+        <div class="collapse navbar-collapse" id="alignment-example">
+
+            <!-- Links -->
+            <ul class="nav navbar-nav">
+                <li><a href="#" th:href="@{'/'}">Lista książek</a></li>
+                <li><a href="#" th:href="@{'/book/new'}">Dodaj książkę</a></li>
+            </ul>
+
+            <!-- Date -->
+            <div class="navbar-text navbar-right" th:text="${#dates.format(#dates.createNow(),'YYYY/MM/dd HH:mm')}">
+            </div>
+
+        </div>
+    </div>
+</nav>
+<div class="container-fluid" style="margin-top: 5%;">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h1 class="panel-title">Książki</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(books)}">
+                        <table class="table table-hover opacity-4">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>ID</th>
+                                <th>Tytuł</th>
+                                <th>Cena</th>
+                                <th>Opis</th>
+                                <th>Numer EAN</th>
+                            </tr>
+                            <tr th:each="book : ${books}">
+                                <td th:text="${book.id}"></td>
+                                <td th:text="${book.title}"></td>
+                                <td th:text="${book.author}"></td>
+                                <td th:text="${book.price}"></td>
+                                <td th:text="${book.descritpion}"></td>
+                                <td th:text="${book.ean}"></td>
+                                <td><a href="#" th:href="@{'/book/show/' + ${book.id}}">Pokaż</a></td>
+                                <td><a href="#" th:href="@{'/book/' + ${book.id}} + '/delete'">Usuń</a></td>
+                                <td><a href="#" th:href="@{'/book/' + ${book.id}} + '/update'">Aktualizuj</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

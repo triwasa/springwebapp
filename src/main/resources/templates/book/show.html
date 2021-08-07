@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Opis książki</title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+
+        <!-- BRAND -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" th:href="@{'/'}">Biblioteka</a>
+        </div>
+
+        <!-- COLLAPSIBLE NAVBAR -->
+        <div class="collapse navbar-collapse" id="alignment-example">
+
+            <!-- Links -->
+            <ul class="nav navbar-nav">
+                <li><a href="#" th:href="@{'/'}">Lista książek</a></li>
+                <li><a href="#" th:href="@{'/book/new'}">Dodaj książkę</a></li>
+            </ul>
+
+            <!-- Date -->
+            <div class="navbar-text navbar-right" th:text="${#dates.format(#dates.createNow(),'YYYY/MM/dd HH:mm')}">
+            </div>
+
+        </div>
+    </div>
+</nav>
+<body style="
+    background-image: url('https://images.pexels.com/photos/1319854/pexels-photo-1319854.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+    height: 100vh;
+">
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form th:object="${book}" th:action="@{/book/}" method="post">
+                <input type="hidden" disabled="true" th:field="*{id}"/>
+                <div class="pannel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h1 class="panel-title" th:text="${book.title}"></h1>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3 form-group">
+                                    <label>Tytuł:</label>
+                                    <p th:text="${book.title}"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 form-group">
+                                    <label>Autor:</label>
+                                    <p th:text="${book.author}"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 form-group">
+                                    <label>Cena:</label>
+                                    <p th:text="${book.price}"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label>Opis:</label>
+                                    <p th:text="${book.descritpion}"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 form-group">
+                                    <label>EAN:</label>
+                                    <p th:text="${book.ean}"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+</body>
+</html>
