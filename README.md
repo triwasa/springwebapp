@@ -1,6 +1,7 @@
 # springwebapp
 Aplikacja wykonana na potrzeby rekrutacji dla PWN AI
-![image](https://user-images.githubusercontent.com/62576002/128646495-a66f548c-a407-4ed3-a6de-7d3344ece437.png)
+![image](https://user-images.githubusercontent.com/62576002/128646788-59c06433-bd98-4f9f-af80-1cf3e7ceda10.png)
+
 <br />
 Z czego korzystałem:<br />
 -https://www.webjars.org/ <br />
